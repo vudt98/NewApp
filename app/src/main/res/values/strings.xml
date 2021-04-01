@@ -11,4 +11,5 @@
     <string name="unknown_error_occurred">Could not load search results: %s</string>
     <string name="refresh">Refresh</string>
     <string name="delete_all_bookmarks">Delete all bookmarks</string>
+    <string name="refresh">Refresh</string>
 </resources>

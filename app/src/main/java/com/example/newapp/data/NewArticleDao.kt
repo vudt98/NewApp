@@ -21,4 +21,5 @@ interface NewArticleDao {
     @Query("DELETE FROM breaking_news")
     suspend fun deleteAllBreakingNews()
 
+    @Query("DELETE FROM news_articles WHERE updateAt < :")
 }
