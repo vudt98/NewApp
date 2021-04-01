@@ -10,7 +10,7 @@ data class NewsArticle(
     var url: String,
     val thumbnail: String?,
     val isBookmarked: Boolean,
-    val updateAt: Long = System.currentTimeMillis()
+    val updatedAt: Long = System.currentTimeMillis()
 )
 
 @Entity(tableName = "breaking_news")

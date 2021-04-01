@@ -21,5 +21,6 @@ interface NewArticleDao {
     @Query("DELETE FROM breaking_news")
     suspend fun deleteAllBreakingNews()
 
-    @Query("DELETE FROM news_articles WHERE updateAt < :")
+    @Query("DELETE FROM news_articles WHERE updatedAt < :timestampInMillis AND isBookmarked = 0")
+    suspend fun deleteNonBookmarkedArticlesOlderThan(timestampInMillis: Long)
 }

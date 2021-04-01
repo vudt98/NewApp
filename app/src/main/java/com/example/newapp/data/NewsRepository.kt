@@ -55,4 +55,8 @@ class NewsRepository @Inject constructor(
                 onFetchFailed(t)
             }
         )
+
+    suspend fun deleteNonBookmarkedArticlesOlderThan(timestampmInMilliis : Long){
+        newArticleDao.deleteNonBookmarkedArticlesOlderThan(timestampmInMilliis)
+    }
 }
