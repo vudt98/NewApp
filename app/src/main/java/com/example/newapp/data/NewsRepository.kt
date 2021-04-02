@@ -56,6 +56,16 @@ class NewsRepository @Inject constructor(
             }
         )
 
+    fun getAllBookmarkedArticles(): Flow<List<NewsArticle>> =
+        newArticleDao.getAllBookmarkedArticle()
+
+    suspend fun updateArticle(article: NewsArticle){
+        newArticleDao.updateArticle(article)
+    }
+    suspend fun resetAllBookmarks(){
+        newArticleDao.resetAllBookmarks()
+    }
+
     suspend fun deleteNonBookmarkedArticlesOlderThan(timestampmInMilliis : Long){
         newArticleDao.deleteNonBookmarkedArticlesOlderThan(timestampmInMilliis)
     }

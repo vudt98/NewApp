@@ -1,5 +1,7 @@
 package com.example.newapp.breakingnew
 
+import android.content.Intent
+import android.net.Uri
 import android.os.Bundle
 import android.view.Menu
 import android.view.MenuInflater
@@ -9,6 +11,7 @@ import androidx.core.view.isVisible
 import androidx.fragment.app.Fragment
 import androidx.fragment.app.viewModels
 import androidx.lifecycle.lifecycleScope
+import androidx.lifecycle.viewModelScope
 import androidx.recyclerview.widget.LinearLayoutManager
 import com.example.newapp.R
 import com.example.newapp.databinding.FragmentBreakingNewsBinding
@@ -29,7 +32,16 @@ class BreakingNewsFragment : Fragment(R.layout.fragment_breaking_news) {
 
         val binding = FragmentBreakingNewsBinding.bind(view)
 
-        val newsArticleAdapter = NewsArticleListAdapter()
+        val newsArticleAdapter = NewsArticleListAdapter(
+            onItemClick = { article ->
+                val uri = Uri.parse(article.url)
+                val intent = Intent(Intent.ACTION_SEND,uri)
+                requireActivity().startActivity(intent)
+            },
+            onBookmarkClick = { article ->
+                viewModel.onBookmarkClick(article)
+            }
+        )
 
         binding.apply {
             recyclerView.apply {
